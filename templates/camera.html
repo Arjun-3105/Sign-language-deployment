@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #prediction {
+            font-size: 24px;
+            margin: 20px;
+        }
+        #video-feed {
+            width: 100%;
+            max-width: 640px;
+            margin-top: 20px;
+        }
+        img {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>American Sign Language Prediction</h1>
+
+    <!-- Display the MJPEG stream from Flask -->
+    <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Camera Feed">
+
+    <div id="prediction">Predicted Text: </div>
+    
+    <button onclick="clearText()">Clear Text</button>
+
+    <script>
+        const predictionDiv = document.getElementById('prediction');
+
+        // Fetch prediction from Flask backend
+        async function fetchPrediction() {
+            const response = await fetch('/get_prediction');
+            const data = await response.json();
+            predictionDiv.textContent = `Predicted Text: ${data.prediction}`;
+        }
+
+        // Clear the text field
+        async function clearText() {
+            await fetch('/clear_text', { method: 'POST' });
+            predictionDiv.textContent = "Predicted Text: ";
+        }
+
+        // Update prediction every second
+        setInterval(fetchPrediction, 1000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+body {
+    color: white;
+    font-family: Montserrat;
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full height for body */
+    background: radial-gradient(circle, #000000, #28016c, #3403ba, #2f35e8); /* Define your radial gradient colors */
+    background-size: 300% 300%; /* Increase the size for smooth animation */
+    animation: gradient-animation 15s ease infinite; /* Animation with duration and infinite looping */
+}
+
+h1{
+    font-style: bolder;
+    align-items: center;
+    padding-left: 15px;
+    padding-top: 80px;
+    font-size: 90px;
+}
+h5{ 
+    font-weight: 100;
+    font-style: normal;
+    align-items: center;
+    padding-left: 25px;
+    font-size: 30px;
+}
+
+/* Define the keyframes for the animation */
+@keyframes gradient-animation {
+    0% {
+        background-position: center; /* Starting position at the center */
+    }
+    50% {
+        background-position: 100% 100%; /* Move to the bottom right */
+    }
+    100% {
+        background-position: center; /* Return to center */
+    }
+}
+
+.button{
+    margin-top: 50px;
+    margin-left: 200px;
+    
+}
+
+.img{
+    border-radius: 30%;
+}
+  /* landingtext */
+
+  
+
+
